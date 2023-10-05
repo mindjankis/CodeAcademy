@@ -120,7 +120,7 @@ Kiekvienas skaičius turi išspausdintas naujoje eilutėje.
 monday-tuesday-wednesday-thursday-friday-saturday-sunday-
 */
 
-//$days = [
+//$dienos = [
 //    'monday',
 //    'tuesday',
 //    'wednesday',
@@ -129,8 +129,8 @@ monday-tuesday-wednesday-thursday-friday-saturday-sunday-
 //    'saturday',
 //    'sunday',
 //];
-//foreach($days as $day){
-//echo $day.PHP_EOL;
+//foreach($dienos as $diena){
+//echo $diena.PHP_EOL;
 //}
 
 /*
@@ -147,7 +147,6 @@ bool(true)
 
 HINT: atkreipkite dėmesį į ką pavirsta skaičius 0
 */
-
 //for($i=-5;$i<=5;$i++){
 //    echo $i.PHP_EOL;
 //    var_dump((bool)$i).PHP_EOL;
