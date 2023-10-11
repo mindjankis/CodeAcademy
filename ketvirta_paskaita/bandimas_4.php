@@ -101,4 +101,15 @@ textReplicator('some_text', null);
 /*
 6. Paverskite funkciją 'textReplicator', į veikiančią anoniminę funkciją.
 */
-
+$textreplicator=function(string $text, ?int $magnifier):string
+{
+    if (isset($magnifier))
+    {
+        for($i=1;$i<$magnifier;$i++)
+        {
+        echo $text;
+        }
+        }
+    return 'some_text';
+};
+echo $textreplicator('some_text-',5);
