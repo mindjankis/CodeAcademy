@@ -23,7 +23,7 @@ Funkcija grąžina: funkcija nieko negrąžina - ji tik išspausdina masyvą į 
 'another text'
 ...
 */
-//function arrayPrinter($arr):void {
+//function arrayPrinter(array $arr):void {
 //    foreach($arr as $element) {
 //        echo $element . PHP_EOL;
 //    }
