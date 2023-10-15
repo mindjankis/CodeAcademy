@@ -26,7 +26,7 @@ declare(strict_types=1);
 //    echo $i.PHP_EOL;
 //    $i++;
 //}
-$i = 1;
+//$i = 1;
 //do {
 //    echo $i.PHP_EOL;
 //    $i++;
@@ -46,10 +46,10 @@ $i = 1;
 //4.
 //Išspausdinkite kas antrą skaičių nuo 1 iki 20 naudodamiesi ciklu.
 //Kiekvienas skaičius turi išspausdintas naujoje eilutėje.
-for ($i=0;$i<20;$i++){
-    $i=$i+1;
-    echo $i.PHP_EOL;
-}
+//for ($i=0;$i<20;$i++){
+//    $i=$i+1;
+//    echo $i.PHP_EOL;
+//}
 
 //5.
 //Išspausdinkite skaičius, nuo 1 iki 20, kurie dalijasi iš 3.

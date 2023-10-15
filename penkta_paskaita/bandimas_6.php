@@ -343,20 +343,20 @@ declare (strict_types=1);
 //17. Į masyvą pridėkite naują narį - skaičiu 255 - ir išspausdinkite masyva pasinaudodami funkcija 'printr'
 //*/
 
-function getNumbers(): array
-{
-    return [
-        99,
-        15,
-        28,
-        13,
-        145,
-        99,
-        12,
-        -57,
-        -36,
-    ];
-}
+//function getNumbers(): array
+//{
+//    return [
+//        99,
+//        15,
+//        28,
+//        13,
+//        145,
+//        99,
+//        12,
+//        -57,
+//        -36,
+//    ];
+//}
 
 //function exercise12 (array $array):int
 //{
@@ -436,3 +436,6 @@ function getNumbers(): array
 //$getnumbersvalue=getNumbers();
 //print_r(exercise17($getnumbersvalue));
 
+$string = 'labas,';
+$string = rtrim($string,',');
+print_r($string);
