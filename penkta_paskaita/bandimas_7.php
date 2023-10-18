@@ -575,17 +575,17 @@ function getProducts(): array
 //
 //}
 
-//function exercise13(): void
-//{
-//    $products = getProducts();
-//    $result = [];
-//    foreach ($products as $key => $value){
-//        $result[] = $products[$key]['type'] . ' - ';
-//        $result[] = $products[$key]['name'] . ', ';
-//    }
-//        $string = implode('',$result);
-//        $string = rtrim($string,', ');
-//        print_r($string);
-//}
-//
-//echo exercise13();
+function exercise13(): void
+{
+    $products = getProducts();
+    $result = [];
+    foreach ($products as $key => $value){
+        $result[] = $products[$key]['type'] . ' - ';
+        $result[] = $products[$key]['name'] . ', ';
+    }
+        $string = implode('',$result);
+        $string = rtrim($string,', ');
+        print_r($string);
+}
+
+echo exercise13();
