@@ -491,27 +491,27 @@ function getShoppingCart(): array
 //{
 //    return [];
 //}
-$products = [
-    [
-        'name' => 'sofa',
-        'price' => 15,
-    ],
-    [
-        'name' => 'chair',
-        'price' => 85,
-    ],
-];
-function array_filter_custom(array $array, $pricefilter):array{
-    foreach ($array as $key => $value) {
-        if($value['price']>$pricefilter){
-            unset($array[$key]);
-        }
-
-    }
-    return $array;
-}
-
-print_r(array_filter_custom($products,50));
+//$products = [
+//    [
+//        'name' => 'sofa',
+//        'price' => 15,
+//    ],
+//    [
+//        'name' => 'chair',
+//        'price' => 85,
+//    ],
+//];
+//function array_filter_custom(array $array, $pricefilter):array{
+//    foreach ($array as $key => $value) {
+//        if($value['price']>$pricefilter){
+//            unset($array[$key]);
+//        }
+//
+//    }
+//    return $array;
+//}
+//
+//print_r(array_filter_custom($products,50));
 
 
 
@@ -525,4 +525,16 @@ print_r(array_filter_custom($products,50));
 //{
 //    return 'array reduced to string';
 //}
+
+
+$fruits = array(
+    'orange' => 4,
+    'apple' => 2,
+    'banana' => 3
+);
+
+krsort($fruits);
+print_r($fruits);
+// Output: Array ( [orange] => 4 [banana] => 3 [apple] => 2 )
+
 
