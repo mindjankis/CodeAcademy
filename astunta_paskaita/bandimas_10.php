@@ -238,6 +238,28 @@ $someProducts = [
 //    return $arraystart;
 //}
 //print_r(exercise2(['compas','hello', 'Hickup', 'habitas', '123', '456','124','Computer']));
+
+//function exercise2(array $words): array
+//{
+//    /*
+//    Sukategorizuokite žodžius pagal jų pradžios simbolį.
+//    Funkcija kviečiama:
+//    exercise2(['hello', 'Hickup', '123', 'computer'])
+//    Funkcijos outputas:
+//    [
+//        'h' => ['hello', 'Hickup'],
+//        '1' => ['123'],
+//        'c' => ['computer'],
+//    ]
+//    */
+//    $result = [];
+//    foreach ($words as $word) {
+//        $firstWordSymbolInLowerCase = lcfirst(substr($word, 0, 1));
+//        $result[$firstWordSymbolInLowerCase][] = $word;
+//    }
+//
+//    return $result;
+//}
 //
 //function exercise3(array $words): array{
 //    $arraystart=[];
@@ -329,6 +351,30 @@ $someProducts = [
 //}
 //
 //print_r(exercise3(['hello', 'you']));
+
+//function getVowelsCount(string $word): int
+//{
+//    $letters = ['a', 'e', 'i', 'o', 'u', 'y'];
+//
+//    $count = 0;
+//    foreach ($letters as $letter) {
+//        $count += substr_count(strtolower($word), $letter);
+//    }
+//
+//    return $count;
+//}
+//
+//function getConsonantsCount(string $word): int
+//{
+//    $letters = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z'];
+//    $count = 0;
+//
+//    foreach ($letters as $letter) {
+//        $count += substr_count(strtolower($word), $letter);
+//    }
+//
+//    return $count;
+//}
 //function exercise4(): array
 //{
 //    /*
@@ -355,3 +401,4 @@ $someProducts = [
 //}
 //
 //print_r(exercise4());
+
