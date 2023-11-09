@@ -302,9 +302,9 @@ declare (strict_types=1);
 //            print_r($product['name']); echo ' ';
 //            print_r($interval->format('%a days ago'));echo PHP_EOL;
 //        }
-//            else
+//            else{
 //            $interval=$datenow->diff($date);
-//            {print_r($product['name']); echo ' ';
+//            print_r($product['name']); echo ' ';
 //            print_r($interval->format('%Y years %m month %d days ago')); echo PHP_EOL;
 //            }
 //
@@ -312,6 +312,7 @@ declare (strict_types=1);
 //
 //    }
 //}
+//    exercise11(true);echo PHP_EOL;
 //    exercise11(false);
 //
 //function exercise12(int $numberOfCycles): void
