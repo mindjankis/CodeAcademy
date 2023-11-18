@@ -7,48 +7,49 @@ else{
     file_put_contents('todo_database.json',json_encode($todosarray,JSON_PRETTY_PRINT));
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
 </head>
 <body>
-<table border="2">
+
+<div style="text-align:center; border: 5px solid red; height: 55px; width: 705px; background-color: red;">
+<b>New TODO</b>
+<table>
   <tbody>
     <tr>
       <td>
-      <form style="height: 39px; width: 700px; background-color: #5e8949" method="post" action="submit.php">
-<span style="font-weight: bold;">New TODO:</span><input name="todo" type="text"> 
-<span style="font-weight: bold;">Due date:</span><input name="date" type="date"> 
-<span style="font-weight: bold;">Due time:</span><input name="time" type="time">
+      <form style="height: 30px; width: 700px; background-color: yellow;" method="post" action="submit.php">
+<span style="font-weight: bold;"><label for="todo">New TODO:</label></span><input id="todo" name="todo" type="text">
+<span style="font-weight: bold;"><label for="date">Due date:</label></span><input id="date" name="date" type="date">
+<span style="font-weight: bold;"><label for="time">Due time:</label></span><input id="time" name="time" type="time">
 <button type="submit">Submit</button>
       </form>
       </td>
     </tr>
   </tbody>
 </table>
+</div>
 <br>
-<table border="2">
-  <tbody>
+<table style="border: 2px solid black">
     <tr>
-      <th style="width: 300px; background-color: aqua">TODOs</th>
-      <th style="width: 300px; background-color: aqua">Created at</th>
-      <th style="width: 300px; background-color: aqua">Due date</th>
+      <th style="border: 1px solid black; width: 300px; background-color: aqua">TODOs</th>
+      <th style="border: 1px solid black; width: 300px; background-color: aqua">Created at</th>
+      <th style="border: 1px solid black; width: 300px; background-color: aqua">Due date</th>
     </tr>
-  </tbody>
 </table>
 
 <?php foreach ($todosarray as $key=>$value):?>
-<table border="2">
-  <tbody>
+<table style="border: 2px solid black">
     <tr>
-      <td style="width: 300px;"><?php echo $value['todo'];?><br>
+      <td style="border: 1px solid black; width: 300px;"><?php echo $value['todo'];?><br>
       </td>
-      <td style="width: 300px;"><?php echo $value['curent_date'];?><br>
+      <td style="border: 1px solid black; width: 300px;"><?php echo $value['curent_date'];?><br>
       </td>
-      <td style="width: 300px;"><?php echo $value['date'].' '.$value['time']?><br>
+      <td style="border: 1px solid black; width: 300px;"><?php echo $value['date'].' '.$value['time']?><br>
       </td>
       <td>
       <form action="delete.php" method="post"> 
@@ -57,7 +58,6 @@ else{
       </td>
 <?php endforeach;?>
     </tr>
-</tbody>
 </table>
 </body>
 </html>
