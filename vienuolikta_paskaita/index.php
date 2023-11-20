@@ -12,14 +12,13 @@ else{
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    <title>Uzduociu sarasas</title>
 </head>
 <body>
 
 <div style="text-align:center; border: 5px solid red; height: 55px; width: 705px; background-color: red;">
 <b>New TODO</b>
 <table>
-  <tbody>
     <tr>
       <td>
       <form style="height: 30px; width: 700px; background-color: yellow;" method="post" action="submit.php">
@@ -30,7 +29,6 @@ else{
       </form>
       </td>
     </tr>
-  </tbody>
 </table>
 </div>
 <br>

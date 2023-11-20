@@ -3,7 +3,6 @@ declare (strict_types=1);
     $todosarray=json_decode(file_get_contents('todo_database.json'),true);
     $todolist=$_POST;
     $curentDate=new DateTime();
-    $curentDate=$curentDate->modify('+1 hours');
     $curentDate=$curentDate->format('Y-m-d H:i');
     $todolist['curent_date']=$curentDate;
     $todosarray[]=$todolist;
