@@ -13,7 +13,8 @@ declare (strict_types=1);
 
 //$string = 'A car is standing in a parkinglot.';
 //$newString = preg_replace('/\b\w+\W\s*$/', '', $string);
-//echo $newString;
+//$newString=rtrim($newString,' ');
+//var_dump($newString);
 
 
 
