@@ -34,7 +34,7 @@ else{
 <table style="border: 2px solid black">
     <tr>
       <th style="border: 1px solid black; width: 300px; background-color: aqua">File name</th>
-      <th style="border: 1px solid black; width: 300px; background-color: aqua">File size in Bytes</th>
+      <th style="border: 1px solid black; width: 300px; background-color: aqua">File size in MB</th>
       <th style="border: 1px solid black; width: 300px; background-color: aqua">File_upload_date</th>
     </tr>
 </table>

@@ -13,13 +13,14 @@ declare (strict_types=1);
 $uploadedfiletype=trim($_FILES['fileforupload']['type']);
 $uploadedfilename=trim($_FILES["fileforupload"]['name']);
 $uploadedfilesize=$_FILES['fileforupload']['size'];
-$filesavepath='./storage/' . uniqid().' '.$uploadedfilename;
+$uploadedfilesize=round($uploadedfilesize/(1024*1024),4);
+$filesavepath='./storage/' . uniqid().'_'.$uploadedfilename;
 $curentDate=new DateTime();
 $curentDate=$curentDate->format('Y-m-d');
 $tempfilepath=trim($_FILES["fileforupload"]['tmp_name']);
  if (!preg_match('/jpeg|png/',$uploadedfiletype)){
     echo 'File type error';die;}
-    elseif ($uploadedfilesize>1024000) {
+    elseif ($uploadedfilesize>1) {
         echo 'File is bigger than 1MB';die;
     }
 $filedataarray=json_decode(file_get_contents('file_database.json'),true);
