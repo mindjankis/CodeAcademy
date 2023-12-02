@@ -1,4 +1,5 @@
-<?php declare (strict_types=1);
+<?php
+declare (strict_types=1);
 if(file_exists('todo_database.json')){
     $todosarray=json_decode(file_get_contents('todo_database.json'),true);
     }
@@ -57,5 +58,10 @@ else{
 <?php endforeach;?>
     </tr>
 </table>
+<!--<p><input id="Button2" type="button" value="Facebook" onclick="window.open('http://facebook.com')"/></p>-->
+<!--<button onclick="window.location.href='http://facebook.com';" target="_blank">-->
+<!--    <img src="./Facebook_logo.jpg" width="100" height="50" alt="Facebook logo">-->
+<!--</button>-->
+
 </body>
 </html>
