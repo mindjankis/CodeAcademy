@@ -1,7 +1,8 @@
 <?php
 declare (strict_types=1);
-$connection = new \PDO('mysql:host=localhost:3306;dbname=film_rental','root','',
-    [\PDO::ATTR_ERRMODE=>\PDO::ERRMODE_EXCEPTION],);
+require '.\connection_film_rental.php';
+//$connection = new \PDO('mysql:host=localhost:3306;dbname=film_rental','root','',
+//    [\PDO::ATTR_ERRMODE=>\PDO::ERRMODE_EXCEPTION],);
 $statement=$connection->prepare('SELECT*FROM actor LIMIT 10;');
 $statement->execute();
 $datas=$statement->fetchAll(\PDO::FETCH_ASSOC);
@@ -29,7 +30,6 @@ $datas2=$statement->fetchAll(\PDO::FETCH_ASSOC);
 <div style="text-align:center; border: 5px solid red; height: 20px; width: 770px; background-color: red;">
     <b>Actor atvaizdavimas</b>
 </div>
-<br>
 <table style="border: 2px solid black">
     <tr>
       <th style="border: 1px solid black; width: 50px; background-color: aqua">id</th>
@@ -58,7 +58,7 @@ $datas2=$statement->fetchAll(\PDO::FETCH_ASSOC);
 </table>
 <br>
 <div style="text-align:center; border: 5px solid red; height: 20px; width: 770px; background-color: red;">
-    <b>Actor table SEARCH</b>
+    <b>Actor table by name</b>
 </div>
 <table>
     <tr>
