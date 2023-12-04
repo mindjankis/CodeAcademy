@@ -1,7 +1,8 @@
 <?php
 declare (strict_types=1);
 //require '.\connection_film_rental.php';
-$connection = new \PDO('mysql:host=localhost:3306;dbname=film_rental','root','',
+$connection = new \PDO('mysql:host=sql307.hyperphp.com:3306;dbname=hp_35458120_film_rental',
+    'hp_35458120','Labxxxxx1s',
     [\PDO::ATTR_ERRMODE=>\PDO::ERRMODE_EXCEPTION],);
 //$statement=$connection->prepare('SELECT*FROM actor LIMIT 10;');
 //$statement->execute();

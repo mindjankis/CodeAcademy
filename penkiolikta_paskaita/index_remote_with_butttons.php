@@ -1,7 +1,8 @@
 <?php
 declare (strict_types=1);
 //require '.\connection_film_rental.php';
-$connection = new \PDO('mysql:host=localhost:3306;dbname=film_rental','root','',
+$connection = new \PDO('mysql:host=sql307.hyperphp.com:3306;dbname=hp_35458120_film_rental',
+    'hp_35458120','Labxxxxx1s',
     [\PDO::ATTR_ERRMODE=>\PDO::ERRMODE_EXCEPTION],);
 //$statement=$connection->prepare('SELECT*FROM actor LIMIT 10;');
 //$statement->execute();
@@ -33,56 +34,15 @@ $datas=$statement->fetchAll(\PDO::FETCH_ASSOC);
 if(file_exists('first_name.json')) {
     $namearray = json_decode(file_get_contents('first_name.json'), true);
     $first_name = $namearray['search_data'];
-    $option=$namearray['option'];
-    $strict=$namearray['strict'];
 }
 else{
-    $namearray=[
-            'search_data'=>'',
-            'option'=>'by_first_name',
-            'strict'=>'strict'
-    ];
+    $namearray=['search_data'=>''];
     file_put_contents('first_name.json',json_encode($namearray,JSON_PRETTY_PRINT));
 }
-if($strict=='strict') {
-    if ($option == 'by_first_name') {
-        $query = 'SELECT*FROM actor WHERE first_name = :first_name;';
-        $statement = $connection->prepare($query);
-        $statement->execute(['first_name' => $first_name]);
-        $datas2 = $statement->fetchAll(\PDO::FETCH_ASSOC);
-    } elseif ($option == 'by_first_or_last_name') {
-        $query = 'SELECT*FROM actor WHERE first_name = :first_name OR last_name = :last_name;';
-        $statement = $connection->prepare($query);
-        $statement->execute(['first_name' => $first_name, 'last_name' => $first_name]);
-        $datas2 = $statement->fetchAll(\PDO::FETCH_ASSOC);
-    } else {
-        $query = 'SELECT*FROM actor WHERE last_name = :first_name;';
-        $statement = $connection->prepare($query);
-        $statement->execute(['first_name' => $first_name]);
-        $datas2 = $statement->fetchAll(\PDO::FETCH_ASSOC);
-    }
-}
-else{
-        if ($option == 'by_first_name') {
-            $query = 'SELECT*FROM actor WHERE first_name LIKE "%' . $first_name . '%"' . ';';
-            //$query = 'SELECT*FROM actor WHERE first_name LIKE "'.':first_name'.'%"'.';';
-            $statement = $connection->prepare($query);
-            $statement->execute();
-            //$statement->execute(['first_name'=>$first_name]);
-            $datas2 = $statement->fetchAll(\PDO::FETCH_ASSOC);
-        } elseif ($option == 'by_first_or_last_name') {
-            $query = 'SELECT*FROM actor WHERE first_name LIKE '.'"%'.$first_name.'%"' .'OR last_name LIKE '.'"%'.$first_name.'%"'.';';
-            $statement = $connection->prepare($query);
-            $statement->execute();
-            $datas2 = $statement->fetchAll(\PDO::FETCH_ASSOC);
-        } else {
-            $query = 'SELECT*FROM actor WHERE last_name LIKE "%' . $first_name . '%"' . ';';
-            $statement = $connection->prepare($query);
-            $statement->execute();
-            $datas2 = $statement->fetchAll(\PDO::FETCH_ASSOC);
-        }
-
-}
+$query='SELECT*FROM actor WHERE first_name = ?;';
+$statement=$connection->prepare($query);
+$statement->execute([$first_name]);
+$datas2=$statement->fetchAll(\PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -136,20 +96,8 @@ else{
 <table>
     <tr>
         <td>
-            <form style="height: 60px; width: 778px; background-color: yellow;" method="post" action="search.php">
-                <label for="option">Choose search option:</label>
-                <select id="option" name="option">
-                    <option value="by_first_name">By First Name</option>
-                    <option value="by_last_name">By Last Name</option>
-                    <option value="by_first_or_last_name">By First OR Last Name</option>
-                </select>
-                <input type="radio" id="strict" name="strict" value="strict" checked>
-                <label for="strict">Strict Search</label>
-                <input type="radio" id="nonstrict" name="strict" value="nonstrict">
-                <label for="nonstrict">Non Strict Search</label>
-                <br><br>
-                <span style="font-weight: bold;"><label for="search_data">Please enter actor name:</label></span>
-                <input id="search_data" name="search_data" type="text">
+            <form style="height: 30px; width: 778px; background-color: yellow;" method="post" action="search.php">
+                <span style="font-weight: bold;"><label for="search_data">Please enter actor name:</label></span><input id="search_data" name="search_data" type="text">
                 <button type="submit">Submit</button>
             </form>
         </td>
@@ -184,11 +132,7 @@ else{
     </tr>
 </table>
 <?php
-$namearray=[
-    'search_data'=>'',
-    'option'=>'by_first_name',
-    'strict'=>'strict'
-];
+$namearray=['search_data'=>''];
 file_put_contents('first_name.json',json_encode($namearray,JSON_PRETTY_PRINT));
 ?>
 </body>

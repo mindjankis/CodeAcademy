@@ -1,6 +1,5 @@
 <?php
 declare (strict_types=1);
-//var_dump($_POST);
 $temp=trim($_POST['next_button']);
 $newarray=explode(' ',$temp);
 $numberofrows=intval($newarray['2']);
