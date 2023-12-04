@@ -36,3 +36,31 @@
 
 # DELETE FROM todo_database
 # WHERE id=3;
+
+# INNER JOIN:
+# Vartotojas nori, kad įvestos šalies išspausdintų visą reikalingą informaciją apie šalį
+# bei apie miestus, kurie priklauso tai šaliai.
+# SELECT *
+# FROM country co
+# INNER JOIN city ci ON co.id = ci.country_id;
+
+# Vartotojas nori, kad įvestos šalies išspausdintų pavadinimą ir miestų pavadinimus.
+# SELECT co.name, ci.name
+# FROM country co
+# INNER JOIN city ci ON co.id = ci.country_id;
+
+# Vartotojas nori, kad įvestos šalies išspausdintų pavadinimą ir miestų pavadinimus,
+# bei kurių pavadinimuose būtų “on” raidės.
+# SELECT co.name, ci.name
+# FROM country co
+# INNER JOIN city ci ON co.id = ci.country_id
+# WHERE ci.name LIKE '%on%';
+
+# Parašykite tokią užklausą, kuri atspausdintų visą payment informaciją, kuri būtų susijusi per
+# customer ir per staff bei kurio customer varda būtų MARY ir darbuotojo vardas - Jon
+
+# SELECT *
+# FROM payment pa
+# INNER JOIN staff st ON pa.staff_id = st.id
+# INNER JOIN customer cu ON pa.customer_id = cu.id
+# WHERE cu.first_name = 'MARY' AND st.first_name ='JON';
