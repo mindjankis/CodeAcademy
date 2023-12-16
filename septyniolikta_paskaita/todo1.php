@@ -36,15 +36,33 @@ todo completed!
 ------------------------------------------------------------------------
 */
 
+/*
+Pridėkite papildomo funkcionalumo todo aplikacijai iš praeitos užduoties:
+- filter_by_text - filtravimas pagal todo tekstą
+------------------------------------------------------------------------
+php -f todo.php search "auto"
+****
+id: 1
+nuplauti automobili
+2022-03-29 15:00
+------------------------------------------------------------------------
+- filter_by_date - filtravimas pagal datą. "gt" - greater than, "lt" - less than, "eq" - lygu.
+Data gali būti paduodama tik vienu formatu - "YYYY-MM-DD". Jeigu data buvo paduota kitu formatu
+arba jeigu ji apskritai nėra validi, grąžinti klaidos pranešimą.
+------------------------------------------------------------------------
+php -f todo.php filter_by_date "gt" "2022-01-01"
+****
+id: 1
+nuplauti automobili
+2022-03-29 15:00
+------------------------------------------------------------------------
+*/
+
 class todo
 {
-    //private array $data=[];
-//    public function __construct( private int $id, private string $task, private string $date)
-//    {
-//    }
-    public function add(string $task, string $date): void
+        public function add(string $task, string $date): void
     {
-            $newarray = [
+        $newarray = [
             'task' => $task,
             'date' => $date,
             'status' => 'uncompleted'];
@@ -58,73 +76,98 @@ class todo
         }
         echo 'todo added!';
     }
-    public function list(): void{
+
+    public function list(): void
+    {
         if (file_exists('todo_database.json')) {
             $todosarray = json_decode(file_get_contents('todo_database.json'), true);
-            foreach ($todosarray as $key=>$value){
-                echo '****'; echo PHP_EOL;
-                echo 'id: '.$key+1; echo PHP_EOL;
-                echo $value['task'];echo PHP_EOL;
-                echo $value['date'];echo PHP_EOL;
+            foreach ($todosarray as $key => $value) {
+                echo '****';
+                echo PHP_EOL;
+                echo 'id: ' . $key + 1;
+                echo PHP_EOL;
+                echo $value['task'];
+                echo PHP_EOL;
+                echo $value['date'];
+                echo PHP_EOL;
             }
         } else {
             echo 'TODO list is empty';
         }
     }
-    public function complete(int $key1): void{
+
+    public function complete(int $key1): void
+    {
         if (file_exists('todo_database.json')) {
             $todosarray = json_decode(file_get_contents('todo_database.json'), true);
-            $todosarray[$key1-1]['status']='completed';
+            $todosarray[$key1 - 1]['status'] = 'completed';
             file_put_contents('todo_database.json', json_encode($todosarray, JSON_PRETTY_PRINT));
         } else {
             echo 'TODO list is empty';
         }
     }
-    public function searchbytask(string $needle):void{
+
+    public function searchbytask(string $needle): void
+    {
         $todosarray = json_decode(file_get_contents('todo_database.json'), true);
-        foreach ($todosarray as $key=>$value){
-            if(str_contains($todosarray[$key]['task'],$needle)){
-                echo '****'; echo PHP_EOL;
-                echo 'id: '.$key+1; echo PHP_EOL;
-                echo $value['task'];echo PHP_EOL;
-                echo $value['date'];echo PHP_EOL;
+        foreach ($todosarray as $key => $value) {
+            if (str_contains($todosarray[$key]['task'], $needle)) {
+                echo '****';
+                echo PHP_EOL;
+                echo 'id: ' . $key + 1;
+                echo PHP_EOL;
+                echo $value['task'];
+                echo PHP_EOL;
+                echo $value['date'];
+                echo PHP_EOL;
             }
         }
 
     }
-    public function searchbydate(string $atrb, string $date):void{
-        $tikrinimas=DateTime::createFromFormat('Y-m-d',$date);
-        if($tikrinimas===false){
-            echo 'Date format not valit!';die;
+
+    public function searchbydate(string $atrb, string $date): void
+    {
+        $checking = DateTime::createFromFormat('Y-m-d', $date);
+        if ($checking === false) {
+            echo 'Date format not valid!';
+            die;
         }
         $todosarray = json_decode(file_get_contents('todo_database.json'), true);
-        $date=new DateTime($date);
+        $date = new DateTime($date);
         //var_dump($date);
-
-        foreach ($todosarray as $key=>$value){
-            $date1=new DateTime($value['date']);
-            $date1=new DateTime($date1->format('Y-m-d'));
-//            $interval=$date->diff($date1);
-//            $interval=intval($interval->format('%d'));
-            //var_dump($date1);
-                if($date1>$date && $atrb=='gt'){
-                    echo '****'; echo PHP_EOL;
-                    echo 'id: '.$key+1; echo PHP_EOL;
-                    echo $value['task'];echo PHP_EOL;
-                    echo $value['date'];echo PHP_EOL;
-                }
-                if($date1<$date && $atrb=='lt'){
-                    echo '****'; echo PHP_EOL;
-                    echo 'id: '.$key+1; echo PHP_EOL;
-                    echo $value['task'];echo PHP_EOL;
-                    echo $value['date'];echo PHP_EOL;
-                }
-                if($date1==$date && $atrb=='eq'){
-                    echo '****'; echo PHP_EOL;
-                    echo 'id: '.$key+1; echo PHP_EOL;
-                    echo $value['task'];echo PHP_EOL;
-                    echo $value['date'];echo PHP_EOL;
-                }
+        foreach ($todosarray as $key => $value) {
+            $date1 = new DateTime($value['date']);
+            $date1 = new DateTime($date1->format('Y-m-d'));
+            if ($date1 > $date && $atrb == 'gt') {
+                echo '****';
+                echo PHP_EOL;
+                echo 'id: ' . $key + 1;
+                echo PHP_EOL;
+                echo $value['task'];
+                echo PHP_EOL;
+                echo $value['date'];
+                echo PHP_EOL;
+            }
+            if ($date1 < $date && $atrb == 'lt') {
+                echo '****';
+                echo PHP_EOL;
+                echo 'id: ' . $key + 1;
+                echo PHP_EOL;
+                echo $value['task'];
+                echo PHP_EOL;
+                echo $value['date'];
+                echo PHP_EOL;
+            }
+            if ($date1 == $date && $atrb == 'eq') {
+                echo '****';
+                echo PHP_EOL;
+                echo 'id: ' . $key + 1;
+                echo PHP_EOL;
+                echo $value['task'];
+                echo PHP_EOL;
+                echo $value['date'];
+                echo PHP_EOL;
+            }
         }
     }
 }
@@ -135,7 +178,7 @@ $obj = new todo();
 //$obj->list();
 //$obj->complete(1);
 //$obj->searchbytask('auto');
-$obj->searchbydate('eq','2022-03-29');
+$obj->searchbydate('eq', '2022-03-29');
 
 
 
