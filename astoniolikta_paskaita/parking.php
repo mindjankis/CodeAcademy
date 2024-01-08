@@ -27,21 +27,21 @@ class Parking
             'carId' => $car->getcarId(),
             'carNumber' => $car->getcarNumber(),
             'status' => 'parked'];
-        if (file_exists('car_database.json')) {
-            $todosarray = json_decode(file_get_contents('car_database.json'), true);
+        if (file_exists('parking_database.json')) {
+            $todosarray = json_decode(file_get_contents('parking_database.json'), true);
             $todosarray[] = $newarray;
-            file_put_contents('car_database.json', json_encode($todosarray, JSON_PRETTY_PRINT));
+            file_put_contents('parking_database.json', json_encode($todosarray, JSON_PRETTY_PRINT));
         } else {
             $todosarray[] = $newarray;
-            file_put_contents('car_database.json', json_encode($todosarray, JSON_PRETTY_PRINT));
+            file_put_contents('parking_database.json', json_encode($todosarray, JSON_PRETTY_PRINT));
         }
         echo 'Car' . ' ' . $newarray['carNumber'] . ' ' . 'parked!' . PHP_EOL;
     }
 
     public function list_cars(): void
     {
-        if (file_exists('car_database.json')) {
-            $todosarray = json_decode(file_get_contents('car_database.json'), true);
+        if (file_exists('parking_database.json')) {
+            $todosarray = json_decode(file_get_contents('parking_database.json'), true);
             echo 'Parked cars:' . PHP_EOL;
             foreach ($todosarray as $value) {
                 echo $value['carNumber'] . PHP_EOL;

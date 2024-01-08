@@ -1,0 +1,32 @@
+{
+    "name": "mindaugas/dvidesimttrecia_paskaita",
+    "description": "First_composer",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Mindaugas\\DvidesimttreciaPaskaita\\": "src/"
+        }
+    },
+    "require": {
+        "monolog/monolog": "^3.5",
+        "symfony/polyfill-mbstring": "^1.28"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.46",
+        "symfony/var-dumper": "^7.0",
+        "symfony/polyfill-iconv": "^1.28",
+        "symfony/console": "^7.0",
+        "symfony/http-kernel": "^7.0",
+        "symfony/process": "^7.0",
+        "symfony/uid": "^7.0",
+        "twig/twig": "^3.8",
+        "mockery/mockery": "^1.6",
+        "pestphp/pest": "^2.30",
+        "spatie/pest-plugin-snapshots": "^2.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
