@@ -1,0 +1,17 @@
+{
+    "name": "mindaugas/dvidesimtketvirta_paskaita",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Mindaugas\\DvidesimtketvirtaPaskaita\\": "src/"
+        }
+    },
+    "require": {
+        "monolog/monolog": "^3.5",
+        "symfony/var-dumper": "^7.0",
+        "spatie/array-to-xml": "^3.2"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.46"
+    }
+}
