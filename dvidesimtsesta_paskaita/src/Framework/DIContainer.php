@@ -42,5 +42,12 @@ class DIContainer
                 return $logger;
             }
         );
+
+        $this->set(
+            Router::class,
+            function (DIContainer $container) {
+                return new Router();
+            }
+        );
     }
 }
