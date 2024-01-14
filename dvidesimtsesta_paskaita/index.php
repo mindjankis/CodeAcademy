@@ -14,8 +14,11 @@ $container->loadDependencies();
 //$logger=$container->get(\Monolog\Logger::class);
 //$logger->warning('Hello world');
 
-$router=$container->get(Router::class);
-$router->process();
+$request=str_replace('/Mokymai/CodeAcademy/dvidesimtsesta_paskaita','',$_SERVER['REQUEST_URI']);
+//dd($route);
 
-dd($_SERVER['REQUEST_URI']);
+$router=$container->get(Router::class);
+$router->process($request);
+
+//dd($_SERVER['REQUEST_URI']);
 
