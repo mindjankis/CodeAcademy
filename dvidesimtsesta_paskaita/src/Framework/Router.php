@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Mindaugas\DvidesimtsestaPaskaita\Framework;
 
 use Mindaugas\DvidesimtsestaPaskaita\Controllers\HomePageController;
+use Mindaugas\DvidesimtsestaPaskaita\Controllers\PageNotFoundController;
 
 class Router
 {
@@ -12,7 +13,8 @@ class Router
 
     public function __construct
     (
-        private HomePageController $homePageController
+        private HomePageController $homePageController,
+        private PageNotFoundController $pageNotFoundController
     )
     {
     }
@@ -28,7 +30,9 @@ class Router
                 dd('Car list');
                 // no break
             default:
-                dd('Not found 404');
+                $this->pageNotFoundController->index();
+                //dd('Not found 404');
+                break;
         }
     }
 }

@@ -3,6 +3,8 @@ declare(strict_types=1);
 namespace Mindaugas\DvidesimtsestaPaskaita\Framework;
 
 use Mindaugas\DvidesimtsestaPaskaita\Controllers\HomePageController;
+use Mindaugas\DvidesimtsestaPaskaita\Controllers\PageNotFoundControler;
+use Mindaugas\DvidesimtsestaPaskaita\Controllers\PageNotFoundController;
 use Monolog\Handler\StreamHandler;
 use Monolog\Level;
 use Monolog\Logger;
@@ -47,7 +49,9 @@ class DIContainer
         $this->set(
             Router::class,
             function (DIContainer $container) {
-                return new Router($this->get(HomePageController::class));
+                return new Router(
+                    $this->get(HomePageController::class),
+                    $this->get(PageNotFoundController::class));
             }
         );
 
@@ -55,6 +59,13 @@ class DIContainer
             HomePageController::class,
             function (DIContainer $container) {
                 return new HomePageController();
+            }
+        );
+
+        $this->set(
+            PageNotFoundController::class,
+            function (DIContainer $container) {
+                return new PageNotFoundController();
             }
         );
     }
