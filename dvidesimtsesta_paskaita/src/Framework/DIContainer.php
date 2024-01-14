@@ -2,6 +2,7 @@
 declare(strict_types=1);
 namespace Mindaugas\DvidesimtsestaPaskaita\Framework;
 
+use Mindaugas\DvidesimtsestaPaskaita\Controllers\HomePageController;
 use Monolog\Handler\StreamHandler;
 use Monolog\Level;
 use Monolog\Logger;
@@ -46,7 +47,14 @@ class DIContainer
         $this->set(
             Router::class,
             function (DIContainer $container) {
-                return new Router();
+                return new Router($this->get(HomePageController::class));
+            }
+        );
+
+        $this->set(
+            HomePageController::class,
+            function (DIContainer $container) {
+                return new HomePageController();
             }
         );
     }

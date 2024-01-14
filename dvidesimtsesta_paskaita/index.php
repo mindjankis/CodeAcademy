@@ -15,10 +15,11 @@ $container->loadDependencies();
 //$logger->warning('Hello world');
 
 $request=str_replace('/Mokymai/CodeAcademy/dvidesimtsesta_paskaita','',$_SERVER['REQUEST_URI']);
+$requestmethod=$_SERVER['REQUEST_METHOD'];
 //dd($route);
 
 $router=$container->get(Router::class);
-$router->process($request);
+$router->process($request, $requestmethod, $_GET);
 
 //dd($_SERVER['REQUEST_URI']);
 
