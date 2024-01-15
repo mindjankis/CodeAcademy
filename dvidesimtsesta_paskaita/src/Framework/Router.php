@@ -30,7 +30,7 @@ class Router
                 break;
             case '/list':
                 $this->carController->list();
-                // no break
+                break;
             default:
                 $this->pageNotFoundController->index();
                 //dd('Not found 404');

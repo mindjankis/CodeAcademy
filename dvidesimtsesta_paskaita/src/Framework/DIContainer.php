@@ -12,6 +12,7 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Level;
 use Monolog\Logger;
 use RuntimeException;
+use Smarty;
 
 class DIContainer
 {
@@ -85,7 +86,10 @@ class DIContainer
         $this->set(
             CarController::class,
             function (DIContainer $container) {
-                return new CarController($this->get(CarRepository::class));
+                return new CarController(
+                    $this->get(CarRepository::class),
+                    $this->get(Smarty::class)
+                );
             }
         );
 
@@ -95,6 +99,11 @@ class DIContainer
                 return new CarRepository($this->get(DbConnection::class));
             }
         );
-
+        $this->set(
+            Smarty::class,
+            function (DIContainer $container) {
+                return new Smarty();
+            }
+        );
     }
 }
