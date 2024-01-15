@@ -2,9 +2,12 @@
 declare(strict_types=1);
 namespace Mindaugas\DvidesimtsestaPaskaita\Framework;
 
+use Mindaugas\DvidesimtsestaPaskaita\Controllers\CarController;
 use Mindaugas\DvidesimtsestaPaskaita\Controllers\HomePageController;
 use Mindaugas\DvidesimtsestaPaskaita\Controllers\PageNotFoundControler;
 use Mindaugas\DvidesimtsestaPaskaita\Controllers\PageNotFoundController;
+use Mindaugas\DvidesimtsestaPaskaita\Models\Car;
+use Mindaugas\DvidesimtsestaPaskaita\Repositories\CarRepository;
 use Monolog\Handler\StreamHandler;
 use Monolog\Level;
 use Monolog\Logger;
@@ -51,7 +54,9 @@ class DIContainer
             function (DIContainer $container) {
                 return new Router(
                     $this->get(HomePageController::class),
-                    $this->get(PageNotFoundController::class));
+                    $this->get(PageNotFoundController::class),
+                    $this->get(CarController::class));
+
             }
         );
 
@@ -68,5 +73,28 @@ class DIContainer
                 return new PageNotFoundController();
             }
         );
+
+        $this->set(
+            DbConnection::class,
+            function (DIContainer $container) {
+                $instance=DbConnection::getInstance();
+                return $instance->getConnection();
+            }
+        );
+
+        $this->set(
+            CarController::class,
+            function (DIContainer $container) {
+                return new CarController($this->get(CarRepository::class));
+            }
+        );
+
+        $this->set(
+            CarRepository::class,
+            function (DIContainer $container) {
+                return new CarRepository($this->get(DbConnection::class));
+            }
+        );
+
     }
 }

@@ -21,5 +21,11 @@ $requestmethod=$_SERVER['REQUEST_METHOD'];
 $router=$container->get(Router::class);
 $router->process($request, $requestmethod, $_GET);
 
+//$db=$container->get(\Mindaugas\DvidesimtsestaPaskaita\Framework\DbConnection::class);
+//$statement=$db->prepare('SELECT * FROM car');
+//$statement->execute();
+//$data=$statement->fetchAll(\PDO::FETCH_ASSOC);
+//dd($data);
+
 //dd($_SERVER['REQUEST_URI']);
 
