@@ -19,7 +19,7 @@ $requestmethod=$_SERVER['REQUEST_METHOD'];
 //dd($route);
 
 $router=$container->get(Router::class);
-$router->process($request, $requestmethod, $_GET);
+$router->process($request, $requestmethod, $_POST);
 
 //$db=$container->get(\Mindaugas\DvidesimtsestaPaskaita\Framework\DbConnection::class);
 //$statement=$db->prepare('SELECT * FROM car');

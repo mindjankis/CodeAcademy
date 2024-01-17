@@ -31,10 +31,33 @@ class Router
             case '/list':
                 $this->carController->list();
                 break;
+            case '/car/store':
+                $this->carController->store($requestdata);
+                break;
+            case '/car/create':
+                $this->carController->create();
+                break;
             default:
-                $this->pageNotFoundController->index();
-                //dd('Not found 404');
+                $carNumber = $this->getCarNumberFromRout($route);
+                if (null !== $carNumber) {
+                    $this->carController->details($carNumber);
+                } else {
+                    $this->pageNotFoundController->index();
+                }
                 break;
         }
+    }
+
+    private function getCarNumberFromRout(string $route): ?string
+    {
+            if (strpos($route, '/car/') !== false) {
+                $result = str_replace('/car/', '', $route);
+                if (!$result) {
+                    $result = null;
+                }
+            } else {
+                $result = null;
+            }
+        return $result;
     }
 }
