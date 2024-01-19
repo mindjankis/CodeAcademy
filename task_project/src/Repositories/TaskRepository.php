@@ -33,36 +33,38 @@ class TaskRepository
         //dd($result);
         return $result;
     }
-    public function findCarByRegistrationNumber(string $carRegistrationNumber): ?Car
-    {
-        $query = "SELECT * FROM car WHERE registrationId = :carRegistrationNumber;";
-        $statement = $this->connection->prepare($query);
-        $statement->execute(['carRegistrationNumber' => $carRegistrationNumber]);
-        $car = $statement->fetchAll(PDO::FETCH_ASSOC);
-        //dd($car);
-        if($car!==[]){
-        $carfinal=new Car(
-                $car[0]['registrationId'],
-                $car[0]['manufacturer'],
-                $car[0]['model'],
-                $car[0]['year']
-            );
-        return $carfinal;
-        }
-        else{return null;}
-    }
+//    public function findCarByRegistrationNumber(string $carRegistrationNumber): ?Car
+//    {
+//        $query = "SELECT * FROM car WHERE registrationId = :carRegistrationNumber;";
+//        $statement = $this->connection->prepare($query);
+//        $statement->execute(['carRegistrationNumber' => $carRegistrationNumber]);
+//        $car = $statement->fetchAll(PDO::FETCH_ASSOC);
+//        //dd($car);
+//        if($car!==[]){
+//        $carfinal=new Car(
+//                $car[0]['registrationId'],
+//                $car[0]['manufacturer'],
+//                $car[0]['model'],
+//                $car[0]['year']
+//            );
+//        return $carfinal;
+//        }
+//        else{return null;}
+//    }
 
-    public function createCar(Car $car): bool
+    public function createTask(Task $task): bool
     {
-        $query = "INSERT INTO car (registrationId, manufacturer, model, year)
-                    VALUES (:registrationId, :manufacturer, :model, :year)";
+        $query = "INSERT INTO task (CREATED_AT, UPDATED_AT, NAME, DESCRIPTION, STATUS, ACTIVE)
+                    VALUES (:CREATED_AT, :UPDATED_AT, :NAME, :DESCRIPTION, :STATUS, :ACTIVE)";
+        //dd($query);
         $statement = $this->connection->prepare($query);
-
         return $statement->execute([
-            'registrationId' => $car->getRegistrationId(),
-            'manufacturer' => $car->getManufacturer(),
-            'model' => $car->getModel(),
-            'year' => $car->getYear()
+            'CREATED_AT' => $task->getCreatedAt(),
+            'UPDATED_AT' => $task->getUpdatedAt(),
+            'NAME' => $task->getName(),
+            'DESCRIPTION' => $task->getDescription(),
+            'STATUS' => $task->getStatus(),
+            'ACTIVE' => $task->getActive()
         ]);
     }
 }

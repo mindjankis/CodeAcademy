@@ -29,19 +29,20 @@ class Router
             case '/list':
                 $this->taskController->list();
                 break;
-            case '/car/store':
+            case '/task/store':
                 $this->taskController->store($requestdata);
+                //dd($requestdata);
                 break;
-            case '/car/create':
+            case '/task/create':
                 $this->taskController->create();
                 break;
             default:
-                $carNumber = $this->getCarNumberFromRout($route);
-                if (null !== $carNumber) {
-                    $this->taskController->details($carNumber);
-                } else {
+//                $carNumber = $this->getCarNumberFromRout($route);
+//                if (null !== $carNumber) {
+//                    $this->taskController->details($carNumber);
+//                } else {
                     $this->pageNotFoundController->index();
-                }
+//                }
                 break;
         }
     }
