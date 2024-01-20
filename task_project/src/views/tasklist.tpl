@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car list Information</title>
+    <title>Task list Information</title>
 </head>
 <body>
 <h1>All Tasks List from Tasks database</h1>
+
+<div>
+    <h2><a href="/Mokymai/CodeAcademy/task_project/">Home page</a></h2>
+</div>
 
 <table style="border: 2px solid black">
     <tr>

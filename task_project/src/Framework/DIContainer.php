@@ -63,7 +63,9 @@ class DIContainer
         $this->set(
             HomePageController::class,
             function (DIContainer $container) {
-                return new HomePageController();
+                return new HomePageController(
+                    $this->get(Smarty::class)
+                );
             }
         );
 
