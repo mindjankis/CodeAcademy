@@ -20,10 +20,10 @@
             <option value="Not Done">Not Done</option>
             <option value="Urgent">Urgent</option>
         </select>
-        <select name="ACTIVE">
-            <option value="Delete">Delete</option>
-            <option value="Leave">Leave</option>
-        </select>
+{*        <select name="ACTIVE">*}
+{*            <option value="Delete">Delete</option>*}
+{*            <option value="Leave">Leave</option>*}
+{*        </select>*}
         <button type="submit">Create</button>
     </form>
 </div>

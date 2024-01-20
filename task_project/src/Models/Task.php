@@ -13,7 +13,7 @@ class Task
         private string $name,
         private string $description,
         private string $status,
-        private string $active
+        private bool $active=true
     ) {
     }
 
@@ -47,8 +47,13 @@ class Task
         return $this->status;
     }
 
-    public function getActive(): string
+    public function getActive(): bool
     {
         return $this->active;
+    }
+
+    public function setActive(bool $active): void
+    {
+        $this->active = $active;
     }
 }

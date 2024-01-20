@@ -37,7 +37,8 @@ class TaskController
     public function store(array $taskData)
     {
         // Validation
-        //dd($taskData);
+        $taskDataName=strval($taskData['NAME']);
+        $taskDataDescription=strval($taskData['DESCRIPTION']);
            if ($taskData===[]) {
             throw new \Exception('Data empty');
         }
@@ -49,10 +50,10 @@ class TaskController
             (int) null,
             (string) $taskData['CREATED_AT'],
             $formattedDate,
-            (string) $taskData['NAME'],
-            (string) $taskData['DESCRIPTION'],
+            $taskDataName,
+            $taskDataDescription,
             (string) $taskData['STATUS'],
-            (string) $taskData['ACTIVE']
+            true
         );
            //dd($task);
 //
