@@ -4,14 +4,14 @@ declare(strict_types=1);
 namespace Mindaugas\DvidesimtsestaPaskaita\Controllers;
 
 use Mindaugas\DvidesimtsestaPaskaita\Models\Car;
-use Mindaugas\DvidesimtsestaPaskaita\Repositories\TaskRepository;
+use Mindaugas\DvidesimtsestaPaskaita\Repositories\CarRepository;
 use Smarty;
 
 class CarController
 {
     public function __construct(
-        private TaskRepository $carRepository,
-        private Smarty         $smarty)
+        private CarRepository $carRepository,
+        private Smarty $smarty)
     {
     }
     public function list()
