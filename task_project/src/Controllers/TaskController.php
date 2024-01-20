@@ -5,16 +5,20 @@ namespace Mindaugas\TaskProject\Controllers;
 
 use Mindaugas\TaskProject\Models\Task;
 use Mindaugas\TaskProject\Repositories\TaskRepository;
+use Psr\Log\LoggerInterface;
 use Smarty;
 use DateTime;
-use function PHPUnit\Framework\throwException;
+use Exception;
+use Logger;
 
 class TaskController
 {
     public function __construct(
         private TaskRepository $taskRepository,
-        private Smarty $smarty
-    ) {
+        private Smarty $smarty,
+        private LoggerInterface $logger
+    )
+    {
     }
     public function list()
     {
@@ -29,12 +33,11 @@ class TaskController
         $taskDataName=strval($taskData['NAME']);
         $taskDataDescription=strval($taskData['DESCRIPTION']);
         if ($taskData===[]) {
-            throw new \Exception('Data empty');
+            throw new Exception('Data empty');
         }
 
         $currentDate = new DateTime();
         $formattedDate = $currentDate->format('Y-m-d');
-        //dd($formattedDate);
         $task = new Task(
             (int) null,
             (string) $taskData['CREATED_AT'],
@@ -58,8 +61,6 @@ class TaskController
     {
         $list=$this->taskRepository->getlist();
         $this->smarty->assign('list', $list);
-        //      dump('asdf');
-        //      dd($list);
         $this->smarty->display('./src/Views/tasklist.tpl');
 
     }
@@ -80,11 +81,10 @@ class TaskController
     {
         $idIntVal=intval($taskData['ID']);
         $finalcheck=$this->taskRepository->check($idIntVal);
-        //dd($finalcheck);
         if(!$finalcheck){
-            throw new \Exception('ID does not exits in database');
+            $this->logger->warning('ID does not exits in database');
+            throw new Exception('ID does not exits in database');
         }
-        //dd($finalcheck);
         $taskDataName=strval($taskData['NAME']);
         $taskDataDescription=strval($taskData['DESCRIPTION']);
         if($taskData['ACTIVE']=='false'){
@@ -95,13 +95,11 @@ class TaskController
             $taskDataActive=1;
             $taskDataActive=boolval($taskDataActive);
         }
-        //dd($taskDataActive);
             if ($taskData===[]) {
-            throw new \Exception('Data empty');
+            throw new Exception('Data empty');
         }
         $currentDate = new DateTime();
         $formattedDate = $currentDate->format('Y-m-d');
-        //dd($formattedDate);
         $task = new Task(
             (int) $taskData['ID'],
             (string) $taskData['CREATED_AT'],

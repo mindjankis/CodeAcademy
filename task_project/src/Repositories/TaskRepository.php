@@ -37,7 +37,6 @@ class TaskRepository
     {
         $query = "INSERT INTO task (CREATED_AT, UPDATED_AT, NAME, DESCRIPTION, STATUS, ACTIVE_B)
                     VALUES (:CREATED_AT, :UPDATED_AT, :NAME, :DESCRIPTION, :STATUS, :ACTIVE_B)";
-        //dd($query);
         $statement = $this->connection->prepare($query);
         return $statement->execute([
             'CREATED_AT' => $task->getCreatedAt(),
@@ -53,7 +52,6 @@ class TaskRepository
     {
         $result=$taskdata['deleteBtn'];
         $query ="UPDATE task SET ACTIVE_B = false WHERE ID =$result";
-        //dd($query);
         $statement = $this->connection->prepare($query);
         return $statement->execute();
     }
@@ -68,7 +66,6 @@ class TaskRepository
         $description=$task->getDescription();
         $status=$task->getStatus();
         $active_b=$task->getActive();
-        //dd($active_b);
         $query="UPDATE task SET 
                 CREATED_AT = :created_at,
                 UPDATED_AT = :updated_at,
@@ -94,7 +91,6 @@ class TaskRepository
         $statement = $this->connection->prepare($query);
         $statement->execute(['id'=>$id]);
         (bool) $exists = $statement->fetch(PDO::FETCH_COLUMN);
-        //dd($exists);
         return $exists;
     }
 }

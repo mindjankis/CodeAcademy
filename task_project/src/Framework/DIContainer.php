@@ -89,7 +89,8 @@ class DIContainer
             function (DIContainer $container) {
                 return new TaskController(
                     $this->get(TaskRepository::class),
-                    $this->get(Smarty::class)
+                    $this->get(Smarty::class),
+                    $this->get(Logger::class)
                 );
             }
         );
