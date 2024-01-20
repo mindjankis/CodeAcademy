@@ -10,13 +10,11 @@ use Mindaugas\TaskProject\Controllers\PageNotFoundController;
 
 class Router
 {
-    public function __construct
-    (
+    public function __construct(
         private HomePageController $homePageController,
         private PageNotFoundController $pageNotFoundController,
         private TaskController $taskController
-    )
-    {
+    ) {
     }
     public function process(string $route, string $requestmethod, array $requestdata):void
     {
@@ -31,32 +29,19 @@ class Router
                 break;
             case '/task/store':
                 $this->taskController->store($requestdata);
-                //dd($requestdata);
                 break;
             case '/task/create':
                 $this->taskController->create();
                 break;
+            case '/task/getdeletedata':
+                $this->taskController->getDeleteData();
+                break;
+            case '/task/delete':
+                $this->taskController->delete($requestdata);
+                break;
             default:
-//                $carNumber = $this->getCarNumberFromRout($route);
-//                if (null !== $carNumber) {
-//                    $this->taskController->details($carNumber);
-//                } else {
-                    $this->pageNotFoundController->index();
-//                }
+                $this->pageNotFoundController->index();
                 break;
         }
-    }
-
-    private function getCarNumberFromRout(string $route): ?string
-    {
-            if (strpos($route, '/task/') !== false) {
-                $result = str_replace('/task/', '', $route);
-                if (!$result) {
-                    $result = null;
-                }
-            } else {
-                $result = null;
-            }
-        return $result;
     }
 }

@@ -14,12 +14,3 @@ Task Project (ToDo)
 5. Padaryti atvaizdavimu reikalingu elementu (forma, task’u lentele ir t.t).
 6. Sukurti README.md faila ir i ji trumpai aprasyti kaip veikia projektas ir kas yra padaryta.
 
-CREATE TABLE task (
-ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-CREATED_AT VARCHAR(255) NOT NULL,
-UPDATED_AT VARCHAR(255) NOT NULL,
-NAME VARCHAR(255) NOT NULL,
-DESCRIPTION VARCHAR(255) NOT NULL,
-STATUS VARCHAR(255) NOT NULL,
-ACTIVE VARCHAR(255) NOT NULL
-);

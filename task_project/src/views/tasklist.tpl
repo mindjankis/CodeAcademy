@@ -12,7 +12,7 @@
     <tr>
         <th style="border: 1px solid black; width: 50px; background-color: aqua">ID</th>
         <th style="border: 1px solid black; width: 100px; background-color: aqua">Created_at</th>
-        <th style="border: 1px solid black; width: 100px; background-color: aqua">Updateda_at</th>
+        <th style="border: 1px solid black; width: 100px; background-color: aqua">Updated_at</th>
         <th style="border: 1px solid black; width: 200px; background-color: aqua">Name</th>
         <th style="border: 1px solid black; width: 400px; background-color: aqua">Description</th>
         <th style="border: 1px solid black; width: 150px; background-color: aqua">Status</th>
@@ -35,6 +35,11 @@
         <td style="border: 1px solid black; width: 150px;">{$task->getStatus()}<br>
         </td>
         <td style="border: 1px solid black; width: 150px;">{$task->getActive()}<br>
+        </td>
+        <td>
+            <form action="/Mokymai/CodeAcademy/task_project/task/delete" method="post">
+                <button type="submit" name="deleteBtn" value={$task->getId()}>Delete</button>
+            </form>
         </td>
         {/foreach}
     </tr>
