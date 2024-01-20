@@ -2,12 +2,12 @@
 declare(strict_types=1);
 namespace Mindaugas\DvidesimtsestaPaskaita\Framework;
 
-use Mindaugas\DvidesimtsestaPaskaita\Controllers\CarController;
+use Mindaugas\DvidesimtsestaPaskaita\Controllers\TaskController;
 use Mindaugas\DvidesimtsestaPaskaita\Controllers\HomePageController;
 use Mindaugas\DvidesimtsestaPaskaita\Controllers\PageNotFoundControler;
 use Mindaugas\DvidesimtsestaPaskaita\Controllers\PageNotFoundController;
 use Mindaugas\DvidesimtsestaPaskaita\Models\Car;
-use Mindaugas\DvidesimtsestaPaskaita\Repositories\CarRepository;
+use Mindaugas\DvidesimtsestaPaskaita\Repositories\TaskRepository;
 use Monolog\Handler\StreamHandler;
 use Monolog\Level;
 use Monolog\Logger;
@@ -56,7 +56,7 @@ class DIContainer
                 return new Router(
                     $this->get(HomePageController::class),
                     $this->get(PageNotFoundController::class),
-                    $this->get(CarController::class));
+                    $this->get(TaskController::class));
 
             }
         );
@@ -84,19 +84,19 @@ class DIContainer
         );
 
         $this->set(
-            CarController::class,
+            TaskController::class,
             function (DIContainer $container) {
-                return new CarController(
-                    $this->get(CarRepository::class),
+                return new TaskController(
+                    $this->get(TaskRepository::class),
                     $this->get(Smarty::class)
                 );
             }
         );
 
         $this->set(
-            CarRepository::class,
+            TaskRepository::class,
             function (DIContainer $container) {
-                return new CarRepository($this->get(DbConnection::class));
+                return new TaskRepository($this->get(DbConnection::class));
             }
         );
         $this->set(

@@ -57,4 +57,44 @@ class TaskRepository
         $statement = $this->connection->prepare($query);
         return $statement->execute();
     }
+
+    public function updateTask(Task $task):bool
+    {
+        //dd($task);
+        $id=$task->getId();
+        $created_at=$task->getCreatedAt();
+        $updated_at=$task->getUpdatedAt();
+        $name=$task->getName();
+        $description=$task->getDescription();
+        $status=$task->getStatus();
+        $active_b=$task->getActive();
+        //dd($active_b);
+        $query="UPDATE task SET 
+                CREATED_AT = :created_at,
+                UPDATED_AT = :updated_at,
+                NAME = :name,
+                DESCRIPTION = :description,
+                STATUS = :status,
+                ACTIVE_B = :active_b
+                WHERE ID = :id";
+        $statement = $this->connection->prepare($query);
+        return $statement->execute(['created_at'=>$created_at,
+            'updated_at'=>$updated_at,
+            'name'=>$name,
+            'description'=>$description,
+            'status'=>$status,
+            'active_b'=>$active_b,
+            'id'=>$id]);
+
+
+    }
+
+    public function check(int $id) {
+        $query="SELECT 1 FROM task WHERE ID = :id";
+        $statement = $this->connection->prepare($query);
+        $statement->execute(['id'=>$id]);
+        (bool) $exists = $statement->fetch(PDO::FETCH_COLUMN);
+        //dd($exists);
+        return $exists;
+    }
 }

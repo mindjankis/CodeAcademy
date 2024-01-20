@@ -39,6 +39,12 @@ class Router
             case '/task/delete':
                 $this->taskController->delete($requestdata);
                 break;
+            case '/task/getupdatedata':
+                $this->taskController->getUpdateData();
+                break;
+            case '/task/update':
+                $this->taskController->update($requestdata);
+                break;
             default:
                 $this->pageNotFoundController->index();
                 break;
