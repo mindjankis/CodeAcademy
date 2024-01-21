@@ -17,5 +17,5 @@ Task Project (ToDo)
 Komentaras:
 Projektas veikia per homegpage puslapi t. y. jusu katalogas/task_project/ Homepage faile pateiktos trumpos
 instrukcijos kaip naudotis programa.
-Geru ispudziu :)
+Geru ispudziu :):)
 
