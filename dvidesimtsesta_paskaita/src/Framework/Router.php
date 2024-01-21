@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Mindaugas\DvidesimtsestaPaskaita\Framework;
 
-use Mindaugas\DvidesimtsestaPaskaita\Controllers\TaskController;
+use Mindaugas\DvidesimtsestaPaskaita\Controllers\CarController;
 use Mindaugas\DvidesimtsestaPaskaita\Controllers\HomePageController;
 use Mindaugas\DvidesimtsestaPaskaita\Controllers\PageNotFoundController;
 
@@ -16,7 +16,7 @@ class Router
     (
         private HomePageController $homePageController,
         private PageNotFoundController $pageNotFoundController,
-        private TaskController $carController
+        private CarController $carController
     )
     {
     }

@@ -11,7 +11,9 @@ class Car
         private string $manufacturer,
         private string $model,
         private int $year
-    ) {
+    )
+    {
+
     }
 
     public function getRegistrationId(): string

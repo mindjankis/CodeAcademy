@@ -14,7 +14,6 @@ class CarRepository
     }
     public function getlist():array
     {
-        //$db=$container->get(\Mindaugas\DvidesimtsestaPaskaita\Framework\DbConnection::class);
         $statement=$this->connection->prepare('SELECT * FROM car');
         $statement->execute();
         $cars=$statement->fetchAll(PDO::FETCH_ASSOC);
