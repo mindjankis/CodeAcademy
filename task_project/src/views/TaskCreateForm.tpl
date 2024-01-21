@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Update Form</title>
+    <title>Task Create Form</title>
 </head>
 <body>
-<h1>Task Update Form</h1>
+<h1>Task Create Form</h1>
 <table style="border: 2px solid black">
     <tr>
         <th style="border: 1px solid black; width: 110px; background-color: aqua">Created_at</th>
